@@ -32,20 +32,24 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: 3. Set up Java JDK 17 (Temurin)
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: 'gradle'
 
       - name: 4. Set up Android SDK
         uses: android-actions/setup-android@v3
 
       - name: 5. Install NPM Dependencies
         run: |
-          npm ci || npm install
+          if [ -f package-lock.json ]; then
+            npm ci || npm install --no-audit
+          else
+            npm install --no-audit
+          fi
 
       - name: 6. Build Web Assets (Vite)
         run: |
