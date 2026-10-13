@@ -1,0 +1,10 @@
+{
+  "name": "EduQuest AR",
+  "description": "Universal gesture-controlled educational AR game for elementary schools (SD), supporting hands-free camera pinch gestures, interactive flat panels, offline gameplay, and Gemini AI question maker.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

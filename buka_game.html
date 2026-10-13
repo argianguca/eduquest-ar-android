@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduQuest AR - Pusat Peluncur Game Offline & Panel Interaktif</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    body {
+      background: #030712;
+      color: #f1f5f9;
+      min-height: 100vh;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      max-width: 860px;
+      width: 100%;
+      background: #0b1329;
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      border-radius: 24px;
+      padding: 36px 32px;
+      box-shadow: 0 0 50px rgba(6, 182, 212, 0.15);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid #06b6d4;
+      color: #22d3ee;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #22d3ee, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    p.subtitle {
+      color: #94a3b8;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .card {
+      background: #030712;
+      border: 1px solid #1e293b;
+      border-radius: 18px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+    .card:hover {
+      border-color: #06b6d4;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.15);
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #06b6d4;
+      color: #030712;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+    .btn:hover {
+      background: #22d3ee;
+      box-shadow: 0 0 16px rgba(6, 182, 212, 0.5);
+    }
+    .btn-secondary {
+      background: #1e293b;
+      color: #f1f5f9;
+      border: 1px solid #334155;
+    }
+    .btn-secondary:hover {
+      background: #334155;
+      box-shadow: none;
+    }
+    .info-box {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 18px 20px;
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    .info-box strong {
+      color: #38bdf8;
+    }
+    .info-box ol, .info-box ul {
+      margin-left: 20px;
+      margin-top: 8px;
+    }
+    .info-box li {
+      margin-bottom: 6px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <div class="badge">EduQuest AR • Siap Pakai & Offline</div>
+      <h1>Pusat Peluncur EduQuest AR</h1>
+      <p class="subtitle">Platform Game Edukasi Gestur AR & Layar Sentuh Interaktif untuk SD Kelas 1-6 dan Interactive Flat Panel (IFP) Android.</p>
+    </div>
+
+    <div class="grid">
+      <!-- Opsi 1: PC Windows -->
+      <div class="card">
+        <div>
+          <div class="card-title">
+            <span>💻</span>
+            <span>Komputer / Laptop PC</span>
+          </div>
+          <p class="card-desc">
+            Cukup klik ganda <strong>start.bat</strong> di folder ini. Server otomatis berjalan di <code>http://localhost:3000</code> meskipun PC Anda <strong>tidak memiliki Node.js</strong>!
+          </p>
+        </div>
+        <a href="http://localhost:3000" class="btn" target="_blank">
+          Buka http://localhost:3000
+        </a>
+      </div>
+
+      <!-- Opsi 2: Interactive Flat Panel Android -->
+      <div class="card">
+        <div>
+          <div class="card-title">
+            <span>📺</span>
+            <span>Interactive Flat Panel Android</span>
+          </div>
+          <p class="card-desc">
+            Buka browser Google Chrome di Android IFP Anda. Buka tautan game, lalu klik <strong>"+ Pasang Aplikasi (PWA)"</strong> agar terpasang di beranda Android tanpa browser bar.
+          </p>
+        </div>
+        <button onclick="salinLink()" class="btn btn-secondary">
+          Salin Tautan Game
+        </button>
+      </div>
+
+      <!-- Opsi 3: Berkas Langsung -->
+      <div class="card">
+        <div>
+          <div class="card-title">
+            <span>⚡</span>
+            <span>Buka Langsung (Dist)</span>
+          </div>
+          <p class="card-desc">
+            Membuka berkas <code>dist/index.html</code> secara langsung. (Jika kamera/audio dibatasi oleh kebijakan keamanan browser lokal, gunakan <code>start.bat</code>).
+          </p>
+        </div>
+        <a href="dist/index.html" class="btn btn-secondary">
+          Buka dist/index.html
+        </a>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>📋 Panduan Singkat untuk Guru di Kelas:</strong>
+      <ol>
+        <li><strong>Bermain di Layar Panel Sentuh Android (IFP 65" - 86"):</strong>
+          Sambungkan IFP ke Wi-Fi kelas. Buka browser Google Chrome di IFP dan pasang game sebagai PWA (layar penuh, orientasi horizontal otomatis). Semua fitur multi-touch 10 jari dan kamera AR langsung aktif!
+        </li>
+        <li><strong>Bermain di Komputer Sekolah (Offline Penuh):</strong>
+          Klik ganda berkas <code>start.bat</code>. Game akan segera membuka tab browser baru. Anda tidak perlu koneksi internet dan tidak perlu memasang Node.js.
+        </li>
+        <li><strong>Kontrol Sentuh vs Kontrol Gerak (AR):</strong>
+          Guru dan murid dapat berganti mode kapan saja antara <em>Layar Sentuh (Touch)</em>, <em>Gestur Kamera (AR)</em>, atau <em>Mouse</em> melalui tombol di pojok atas layar.
+        </li>
+      </ol>
+    </div>
+
+    <div class="footer">
+      EduQuest AR — Dirancang untuk kenyamanan guru dan murid SD di seluruh Indonesia.
+    </div>
+  </div>
+
+  <script>
+    function salinLink() {
+      const url = window.location.origin && window.location.origin !== "null" && window.location.protocol.startsWith("http")
+        ? window.location.origin
+        : "http://localhost:3000";
+      navigator.clipboard.writeText(url).then(() => {
+        alert("Tautan berhasil disalin: " + url + "\n\nBuka di browser Interactive Flat Panel Android Anda!");
+      }).catch(() => {
+        alert("Buka alamat berikut di browser Android IFP Anda:\n" + url);
+      });
+    }
+  </script>
+</body>
+</html>

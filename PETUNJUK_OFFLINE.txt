@@ -1,0 +1,82 @@
+==============================================================================
+PETUNJUK PENGGUNAAN EDUQUEST AR - OFFLINE PC & INTERACTIVE FLAT PANEL (IFP)
+==============================================================================
+
+Selamat datang di EduQuest AR!
+Game ini dirancang khusus untuk kemudahan guru dan murid Sekolah Dasar (SD Kelas 1-6)
+tanpa memerlukan keahlian teknis pemrograman.
+
+------------------------------------------------------------------------------
+A. CARA MENGAKSES GAME DI PC / LAPTOP (OFFLINE, TANPA NODE.JS)
+------------------------------------------------------------------------------
+Jika Anda mengunduh paket kode ini dan tidak memiliki Node.js terpasang di PC:
+
+1. Ekstrak file ZIP unduhan ke folder di komputer Anda.
+2. Klik dua kali berkas:
+      start.bat
+3. Program akan secara otomatis mendeteksi bahwa Node.js tidak ada dan langsung
+   menjalankan server lokal mandiri bawaan Windows (PowerShell HTTP Server).
+4. Browser akan otomatis terbuka ke alamat:
+      http://localhost:3000
+5. Game siap dimainkan 100% secara offline tanpa internet!
+
+Catatan: Jangan menutup jendela terminal hitam yang muncul selama game berlangsung.
+Untuk berhenti bermain, cukup tutup jendela terminal atau tekan Ctrl+C.
+
+
+------------------------------------------------------------------------------
+B. CARA MENGAKSES DI INTERACTIVE FLAT PANEL (IFP) BERBASIS ANDROID
+------------------------------------------------------------------------------
+EduQuest AR telah dioptimalkan khusus untuk layar panel sentuh besar Android
+(seperti merk Maxhub, ViewSonic IFP, Samsung Flip, Hisense, Interactive Whiteboard).
+
+Terdapat 2 cara mudah memainkannya di IFP Android:
+
+CARA 1: MELALUI BROWSER ANDROID / PWA (PALING DIREKOMENDASIKAN)
+1. Sambungkan IFP Android Anda ke jaringan Wi-Fi kelas/sekolah.
+2. Buka browser Google Chrome atau Chromium di Android IFP.
+3. Kunjungi tautan game EduQuest AR (atau jika dihosting di PC guru dalam 1 Wi-Fi,
+   kunjungi IP komputer guru, contoh: http://192.168.1.15:3000).
+4. Pada bilah atas game, klik tombol:
+      "+ Pasang Aplikasi" (atau ikon Install di menu titik tiga Chrome)
+5. Pilih "Pasang" / "Add to Home Screen".
+6. Icon "EduQuest AR" akan muncul di layar beranda IFP seperti aplikasi Android asli!
+7. Game akan berjalan dalam mode layar penuh mendatar (Landscape), bebas dari
+   gangguan browser bar, dan menjaga layar tetap menyala (Wake Lock).
+
+CARA 2: MENGHUBUNGKAN PC / LAPTOP KE IFP DENGAN KABEL
+1. Hubungkan PC/laptop guru ke panel interaktif menggunakan:
+   - Kabel HDMI (untuk menampilkan layar)
+   - Kabel USB Touch (kabel tipe USB-A ke USB-B untuk fungsi layar sentuh)
+2. Jalankan `start.bat` di PC.
+3. Layar IFP akan berfungsi sebagai layar sentuh raksasa untuk murid-murid!
+
+
+------------------------------------------------------------------------------
+C. MODE INTERAKSI DI INTERACTIVE FLAT PANEL
+------------------------------------------------------------------------------
+1. SENTUHAN LANGSUNG (MULTI-TOUCH):
+   - Siswa dapat menyentuh langsung pilihan jawaban A, B, C, D di layar panel.
+   - Pada game "Catch Quest AR", 2 siswa (Tim A dan Tim B) dapat menyentuh
+     token jawaban secara bersamaan tanpa saling mengunci.
+   - Dilengkapi perlindungan anti-zoom dan anti-scroll agar layar tidak tergeser
+     saat banyak tangan menyentuh layar.
+
+2. GESTUR KAMERA (AR HAND TRACKING & POSE):
+   - Jika IFP memiliki webcam bawaan atau webcam eksternal terhubung, Anda
+     dapat beralih ke mode "Gerakan Tangan" atau "AR Pose".
+   - Murid cukup mencubit jari telunjuk & jempol di udara atau melangkah ke
+     zona kiri/kanan di depan kamera untuk menjawab kuis.
+
+
+------------------------------------------------------------------------------
+D. PEMUTAKHIRAN ATAU PENYESUAIAN SOAL (OFFLINE)
+------------------------------------------------------------------------------
+1. Buka menu "Bank Soal" di navigasi atas.
+2. Anda dapat mengimpor atau mengekspor kumpulan soal ke format Excel (.xlsx).
+3. Anda dapat menambahkan soal secara manual atau menggunakan fitur AI jika
+   terhubung ke internet dan memiliki Gemini API Key.
+
+
+Jika ada pertanyaan atau kendala, buka berkas `buka_game.html` untuk panduan visual!
+==============================================================================
