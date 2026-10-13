@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">EduQuest AR</string>
+    <string name="title_activity_main">EduQuest AR</string>
+    <string name="package_name">com.eduquest.ar</string>
+    <string name="custom_url_scheme">com.eduquest.ar</string>
+</resources>

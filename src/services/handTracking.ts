@@ -18,6 +18,7 @@ export interface HandTrackingState {
   isPinchTriggered: boolean; // true for single frame when pinch starts
   handedness: string;
   palmSize: number;
+  rawLandmarks?: any[];
   error: string | null;
 }
 
@@ -231,6 +232,7 @@ class HandTrackingEngine {
               isPinchTriggered,
               handedness,
               palmSize,
+              rawLandmarks: landmarks,
               error: null,
             });
           } else {

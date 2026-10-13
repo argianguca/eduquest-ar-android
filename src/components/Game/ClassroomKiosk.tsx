@@ -37,6 +37,8 @@ interface ClassroomKioskProps {
   onSwitchToAdvancedView: () => void;
   onNavigateToMaker: () => void;
   onOpenSettings: () => void;
+  onOpenCameraTest?: () => void;
+  onOpenTouchTest?: () => void;
 }
 
 export const ClassroomKiosk: React.FC<ClassroomKioskProps> = ({
@@ -49,6 +51,8 @@ export const ClassroomKiosk: React.FC<ClassroomKioskProps> = ({
   onSwitchToAdvancedView,
   onNavigateToMaker,
   onOpenSettings,
+  onOpenCameraTest,
+  onOpenTouchTest,
 }) => {
   const isEn = language === 'en';
 
@@ -434,6 +438,37 @@ export const ClassroomKiosk: React.FC<ClassroomKioskProps> = ({
             </div>
           </button>
         </div>
+
+        {/* Shortcut Uji Kompatibilitas Panel Hisense 75WM61FE */}
+        {(onOpenCameraTest || onOpenTouchTest) && (
+          <div className="flex flex-wrap items-center justify-between gap-2 p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-xs font-mono">
+            <span className="text-slate-400">
+              Uji Kompatibilitas Panel Hisense 75WM61FE:
+            </span>
+            <div className="flex items-center gap-2">
+              {onOpenCameraTest && (
+                <button
+                  type="button"
+                  onClick={onOpenCameraTest}
+                  className="px-3 py-1.5 rounded-lg bg-cyan-950 border border-cyan-500/50 hover:bg-cyan-900 text-cyan-300 font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Camera className="w-3.5 h-3.5" />
+                  Tes Kamera & MediaPipe
+                </button>
+              )}
+              {onOpenTouchTest && (
+                <button
+                  type="button"
+                  onClick={onOpenTouchTest}
+                  className="px-3 py-1.5 rounded-lg bg-teal-950 border border-teal-500/50 hover:bg-teal-900 text-teal-300 font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Touchpad className="w-3.5 h-3.5" />
+                  Uji Multi-Touch
+                </button>
+              )}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* =========================================================================

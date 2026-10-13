@@ -28,6 +28,8 @@ interface DiagnosticModalProps {
   language: Language;
   onClose: () => void;
   onSwitchMode: (mode: 'gesture' | 'touch' | 'mouse') => void;
+  onOpenCameraTest?: () => void;
+  onOpenTouchTest?: () => void;
 }
 
 interface DiagnosticItem {
@@ -43,6 +45,8 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
   language,
   onClose,
   onSwitchMode,
+  onOpenCameraTest,
+  onOpenTouchTest,
 }) => {
   const isEn = language === 'en';
   const [isRunning, setIsRunning] = useState(true);
@@ -338,6 +342,44 @@ export const DiagnosticModal: React.FC<DiagnosticModalProps> = ({
             </div>
           </div>
         )}
+
+        {/* IFP Live Tests */}
+        <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col gap-2.5 font-mono text-xs">
+          <div className="flex items-center gap-2 text-cyan-300 font-bold">
+            <Camera className="w-4 h-4 text-cyan-400" />
+            <span>PENGUJIAN PANEL INTERAKTIF & APK (HISENSE 75WM61FE):</span>
+          </div>
+          <p className="text-slate-400 font-sans text-xs">
+            Uji kamera live feed, deteksi gestur tangan MediaPipe lokal, dan responsivitas layar sentuh multi-touch secara terpisah.
+          </p>
+          <div className="flex flex-wrap items-center gap-2 pt-1">
+            {onOpenCameraTest && (
+              <button
+                onClick={() => {
+                  onClose();
+                  onOpenCameraTest();
+                }}
+                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-all cursor-pointer shadow-[0_0_12px_rgba(6,182,212,0.3)]"
+              >
+                <Camera className="w-4 h-4" />
+                <span>Buka Uji Kamera & MediaPipe</span>
+              </button>
+            )}
+
+            {onOpenTouchTest && (
+              <button
+                onClick={() => {
+                  onClose();
+                  onOpenTouchTest();
+                }}
+                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold transition-all cursor-pointer shadow-[0_0_12px_rgba(20,184,166,0.3)]"
+              >
+                <Touchpad className="w-4 h-4" />
+                <span>Buka Uji Multi-Touch (20+ Jari)</span>
+              </button>
+            )}
+          </div>
+        </div>
 
         {/* Bottom Actions */}
         <div className="flex items-center justify-between pt-2 border-t border-slate-800">

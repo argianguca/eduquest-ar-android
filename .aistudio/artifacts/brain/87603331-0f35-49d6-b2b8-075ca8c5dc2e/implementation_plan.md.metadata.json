@@ -1,6 +1,0 @@
-{
-  "summary": "Rencana implementasi revisi untuk mendukung Interactive Flat Panel (IFP) berbasis Android: optimasi PWA standalone layar lebar landscape, multi-touch layar sentuh serentak untuk banyak siswa, pelacakan gestur kamera hibrida, pencegahan gesture browser Android, serta paket offline mandiri dist dan start.bat.",
-  "updatedAt": "2026-10-13T07:14:03.394987341Z",
-  "requestFeedback": true,
-  "userFacing": true
-}

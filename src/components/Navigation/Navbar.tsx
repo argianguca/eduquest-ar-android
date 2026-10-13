@@ -14,6 +14,7 @@ import {
   Hand,
   Touchpad,
   MousePointer,
+  Camera,
 } from 'lucide-react';
 import { PWAInstallButton } from '../PWA/PWAInstallButton';
 
@@ -25,6 +26,8 @@ interface NavbarProps {
   inputMode: InputMode;
   onOpenSettings: () => void;
   onOpenDiagnostics: () => void;
+  onOpenCameraTest?: () => void;
+  onOpenTouchTest?: () => void;
   isFullscreen: boolean;
   onToggleFullscreen: () => void;
 }
@@ -37,6 +40,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   inputMode,
   onOpenSettings,
   onOpenDiagnostics,
+  onOpenCameraTest,
+  onOpenTouchTest,
   isFullscreen,
   onToggleFullscreen,
 }) => {
@@ -144,6 +149,28 @@ export const Navbar: React.FC<NavbarProps> = ({
               {inputMode === 'gesture' ? 'AR' : inputMode === 'touch' ? 'IFP' : 'Mouse'}
             </span>
           </div>
+
+          {/* IFP Camera Test Screen */}
+          {onOpenCameraTest && (
+            <button
+              onClick={onOpenCameraTest}
+              className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-cyan-300 transition-colors cursor-pointer"
+              title="Uji Kamera & MediaPipe (Hisense IFP)"
+            >
+              <Camera className="w-4 h-4 text-cyan-400" />
+            </button>
+          )}
+
+          {/* IFP Multi-Touch Test Screen */}
+          {onOpenTouchTest && (
+            <button
+              onClick={onOpenTouchTest}
+              className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-teal-300 transition-colors cursor-pointer"
+              title="Uji Layar Sentuh Multi-Touch (Hisense IFP)"
+            >
+              <Touchpad className="w-4 h-4 text-teal-400" />
+            </button>
+          )}
 
           {/* Diagnostics Button */}
           <button

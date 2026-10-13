@@ -22,6 +22,9 @@ import { QuestionBank } from './components/QuestionBank/QuestionBank';
 import { QuestionMaker } from './components/QuestionMaker/QuestionMaker';
 import { SettingsModal } from './components/Settings/SettingsModal';
 import { DiagnosticModal } from './components/Diagnostics/DiagnosticModal';
+import { CameraTestScreen } from './components/Diagnostics/CameraTestScreen';
+import { MultiTouchTestScreen } from './components/Diagnostics/MultiTouchTestScreen';
+import { cameraService } from './services/camera';
 import { OfflineIndicator } from './components/PWA/OfflineIndicator';
 import { useWakeLock } from './hooks/useWakeLock';
 
@@ -41,7 +44,15 @@ export default function App() {
   // Modals
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const [showDiagnostics, setShowDiagnostics] = useState<boolean>(false);
+  const [showCameraTest, setShowCameraTest] = useState<boolean>(false);
+  const [showMultiTouchTest, setShowMultiTouchTest] = useState<boolean>(false);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+
+  // Clean camera shutdown when leaving camera test
+  const handleCloseCameraTest = useCallback(() => {
+    cameraService.stopCamera();
+    setShowCameraTest(false);
+  }, []);
 
   // Keep screen awake during classroom play (Interactive Flat Panels & Tablets)
   useWakeLock(true);
@@ -129,6 +140,9 @@ export default function App() {
 
   // Launch Game
   const handleStartGame = (collection: QuestionCollection, mode: GameMode = 'shooter') => {
+    cameraService.stopCamera();
+    setShowCameraTest(false);
+    setShowMultiTouchTest(false);
     setActiveCollection(collection);
     setActiveMode(mode);
   };
@@ -225,6 +239,8 @@ export default function App() {
         inputMode={config.inputMode}
         onOpenSettings={() => setShowSettings(true)}
         onOpenDiagnostics={() => setShowDiagnostics(true)}
+        onOpenCameraTest={() => setShowCameraTest(true)}
+        onOpenTouchTest={() => setShowMultiTouchTest(true)}
         isFullscreen={isFullscreen}
         onToggleFullscreen={handleToggleFullscreen}
       />
@@ -243,6 +259,8 @@ export default function App() {
               onSwitchToAdvancedView={() => handleUpdateConfig({ kioskModeEnabled: false })}
               onNavigateToMaker={() => setView('maker')}
               onOpenSettings={() => setShowSettings(true)}
+              onOpenCameraTest={() => setShowCameraTest(true)}
+              onOpenTouchTest={() => setShowMultiTouchTest(true)}
             />
           ) : (
             <MainMenu
@@ -255,6 +273,8 @@ export default function App() {
               onNavigateToBank={() => setView('bank')}
               onNavigateToMaker={() => setView('maker')}
               onSwitchToKioskView={() => handleUpdateConfig({ kioskModeEnabled: true })}
+              onOpenCameraTest={() => setShowCameraTest(true)}
+              onOpenTouchTest={() => setShowMultiTouchTest(true)}
             />
           ))}
 
@@ -304,6 +324,24 @@ export default function App() {
           language={language}
           onClose={() => setShowDiagnostics(false)}
           onSwitchMode={(mode) => handleUpdateConfig({ inputMode: mode })}
+          onOpenCameraTest={() => setShowCameraTest(true)}
+          onOpenTouchTest={() => setShowMultiTouchTest(true)}
+        />
+      )}
+
+      {/* Temporary Camera & MediaPipe Test Screen (Hisense 75WM61FE) */}
+      {showCameraTest && (
+        <CameraTestScreen
+          onClose={handleCloseCameraTest}
+          isEn={language === 'en'}
+        />
+      )}
+
+      {/* Temporary Multi-Touch 20+ Finger Test Screen (Hisense 75WM61FE) */}
+      {showMultiTouchTest && (
+        <MultiTouchTestScreen
+          onClose={() => setShowMultiTouchTest(false)}
+          isEn={language === 'en'}
         />
       )}
 

@@ -44,6 +44,8 @@ interface MainMenuProps {
   onNavigateToBank: () => void;
   onNavigateToMaker: () => void;
   onSwitchToKioskView?: () => void;
+  onOpenCameraTest?: () => void;
+  onOpenTouchTest?: () => void;
 }
 
 export const MainMenu: React.FC<MainMenuProps> = ({
@@ -56,6 +58,8 @@ export const MainMenu: React.FC<MainMenuProps> = ({
   onNavigateToBank,
   onNavigateToMaker,
   onSwitchToKioskView,
+  onOpenCameraTest,
+  onOpenTouchTest,
 }) => {
   const isEn = language === 'en';
   const [selectedGrade, setSelectedGrade] = useState<GradeLevel | 'all'>('all');
