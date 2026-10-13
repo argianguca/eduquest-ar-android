@@ -23,25 +23,33 @@ jobs:
   build-android-apk:
     name: Build Android APK for Hisense IFP
     runs-on: ubuntu-latest
+    env:
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
 
     steps:
       - name: 1. Checkout Repository
         uses: actions/checkout@v4
 
-      - name: 2. Set up Node.js 20
+      - name: 2. Set up Node.js 22 (LTS)
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
-      - name: 3. Set up Java JDK 17 (Temurin)
-        uses: actions/setup-java@v4
+      - name: 3. Set up Java JDK 17 (Temurin v5)
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
           cache: 'gradle'
 
-      - name: 4. Set up Android SDK
-        uses: android-actions/setup-android@v3
+      - name: 4. Configure Android SDK & Accept Licenses
+        run: |
+          echo "Using Android SDK at: $ANDROID_HOME"
+          test -d "$ANDROID_HOME" || { echo "Android SDK not found at $ANDROID_HOME"; exit 1; }
+          export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
+          # Auto-accept all SDK and platform licenses
+          yes | sdkmanager --licenses || true
 
       - name: 5. Install NPM Dependencies
         run: |
