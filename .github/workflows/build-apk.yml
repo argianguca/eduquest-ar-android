@@ -50,7 +50,9 @@ jobs:
           export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
           # Auto-accept all SDK and platform licenses
           yes | sdkmanager --licenses || true
-          sdkmanager --install "platforms;android-34" "build-tools;34.0.0" || true
+          # Install required Android 36 SDK packages and platform tools
+          yes | sdkmanager --install "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+          yes | sdkmanager --licenses || true
 
       - name: 5. Install NPM Dependencies
         run: |
